@@ -1,0 +1,41 @@
+template:
+  name: python_template
+  type: Stage
+  projectIdentifier: Harness_python_proj
+  orgIdentifier: default
+  spec:
+    spec:
+      caching:
+        enabled: true
+      cloneCodebase: true
+      execution:
+        steps:
+          - step:
+              identifier: runlinter
+              name: run linter
+              spec:
+                command: |-
+                  pip install flake8
+                  flake8 .
+              timeout: ""
+              type: Run
+          - step:
+              identifier: setupvirtualenvironment
+              name: setup virtual environment
+              spec:
+                command: |-
+                  sudo -H python3 -m venv .venv
+                  . .venv/bin/activate
+                  sudo -H python3 -m pip install -r requirements.txt
+                  sudo -H python3 -m pip install -e .
+              timeout: ""
+              type: Run
+      platform:
+        os: Linux
+        arch: Amd64
+      runtime:
+        type: Cloud
+        spec: {}
+    type: CI
+  identifier: python_template
+  versionLabel: "1.0"
