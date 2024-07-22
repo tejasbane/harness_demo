@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: pre_production
+  identifier: pre_production
+  orgIdentifier: default
+  projectIdentifier: Harness_python_proj
+  environmentRef: production
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: pre_production
+    namespace: harness-delegate-ng
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
