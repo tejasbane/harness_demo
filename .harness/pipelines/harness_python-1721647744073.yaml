@@ -33,10 +33,10 @@ pipeline:
                   name: setup virtual environment
                   spec:
                     command: |-
-                      python3 -m venv .venv
+                      sudo -H python3 -m venv .venv
                       . .venv/bin/activate
-                      python3 -m pip install -r requirements.txt
-                      python3 -m pip install -e .
+                      sudo -H python3 -m pip install -r requirements.txt
+                      sudo -H python3 -m pip install -e .
                   timeout: ""
                   type: Run
           platform:
