@@ -1,5 +1,5 @@
 pipeline:
-  name: harness_pythin_canary
+  name: harness_python_canary
   identifier: harness_pythin_canary
   projectIdentifier: Harness_python_proj
   orgIdentifier: default
