@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: k8infra
+  identifier: k8infra
+  orgIdentifier: default
+  projectIdentifier: Harness_python_proj
+  environmentRef: productionenv
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: pre_production
+    namespace: harness-delegate-ng
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
