@@ -4,5 +4,21 @@ service:
   orgIdentifier: default
   projectIdentifier: Harness_python_proj
   serviceDefinition:
-    spec: {}
+    spec:
+      manifests:
+        - manifest:
+            identifier: python_proj
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.Github_OAuth_1721644823538
+                  gitFetchType: Branch
+                  paths:
+                    - .harness
+                  repoName: harness_python
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
     type: Kubernetes
