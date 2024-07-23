@@ -17,7 +17,7 @@ service:
                   gitFetchType: Branch
                   paths:
                     - .harness
-                  repoName: harness_python
+                  repoName: 16c7x/harness_python
                   branch: main
               skipResourceVersioning: false
               enableDeclarativeRollback: false
