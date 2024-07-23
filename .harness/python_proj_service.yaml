@@ -1,0 +1,5 @@
+service:
+  name: python_proj_service
+  identifier: python_proj_service
+  orgIdentifier: default
+  projectIdentifier: Harness_python_proj
