@@ -16,7 +16,7 @@ service:
                   connectorRef: account.Github_OAuth_1721644823538
                   gitFetchType: Branch
                   paths:
-                    - .harness
+                    - .harness/python_proj_service.yaml
                   repoName: 16c7x/harness_python
                   branch: main
               skipResourceVersioning: false
