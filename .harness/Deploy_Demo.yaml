@@ -22,26 +22,10 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: K8sCanaryDeploy
-                  name: K8sCanaryDeploy_1
-                  identifier: K8sCanaryDeploy_1
-                  spec:
-                    skipDryRun: false
-                    instanceSelection:
-                      type: Count
-                      spec:
-                        count: 1
-                    delegateSelectors:
-                      - helm-delegate
-                  timeout: 10m
-              - step:
-                  type: K8sBlueGreenDeploy
-                  name: K8sBlueGreenDeploy_1
-                  identifier: K8sBlueGreenDeploy_1
-                  spec:
-                    skipDryRun: false
-                    pruningEnabled: false
-                    skipUnchangedManifest: false
+                  type: K8sDryRun
+                  name: K8sDryRun_1
+                  identifier: K8sDryRun_1
+                  spec: {}
                   timeout: 10m
             rollbackSteps:
               - step:
