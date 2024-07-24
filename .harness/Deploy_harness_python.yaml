@@ -1,6 +1,6 @@
 pipeline:
-  name: Deploy harness_python
-  identifier: Deploy_harness_python
+  name: Demo Deploy
+  identifier: Deploy_Demo
   projectIdentifier: harness_Demo
   orgIdentifier: default
   tags: {}
