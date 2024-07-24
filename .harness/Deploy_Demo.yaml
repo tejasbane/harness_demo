@@ -50,3 +50,11 @@ pipeline:
           - helm-delegate
         when:
           pipelineStatus: All
+  properties:
+    ci:
+      codebase:
+        connectorRef: org.GitHUBConn
+        repoName: harness_Demo
+        build: <+input>
+  delegateSelectors:
+    - helm-delegate
