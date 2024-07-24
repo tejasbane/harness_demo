@@ -22,12 +22,15 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: K8sRollingDeploy
-                  name: K8sRollingDeploy_1
-                  identifier: K8sRollingDeploy_1
+                  type: K8sCanaryDeploy
+                  name: K8sCanaryDeploy_1
+                  identifier: K8sCanaryDeploy_1
                   spec:
-                    skipDryRun: true
-                    pruningEnabled: false
+                    skipDryRun: false
+                    instanceSelection:
+                      type: Count
+                      spec:
+                        count: 1
                     delegateSelectors:
                       - helm-delegate
                   timeout: 10m
