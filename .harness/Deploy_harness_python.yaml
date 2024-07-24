@@ -1,7 +1,7 @@
 pipeline:
   name: Deploy harness_python
   identifier: Deploy_harness_python
-  projectIdentifier: Harness_python_proj
+  projectIdentifier: harness_Demo
   orgIdentifier: default
   tags: {}
   stages:
@@ -13,12 +13,12 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: python_proj_service
+            serviceRef: K8Service
           environment:
-            environmentRef: productionenv
+            environmentRef: Production
             deployToAll: false
             infrastructureDefinitions:
-              - identifier: k8infra
+              - identifier: Infra
           execution:
             steps:
               - step:
