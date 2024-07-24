@@ -22,13 +22,24 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: K8sRollingDeploy
-                  name: K8sRollingDeploy_1
-                  identifier: K8sRollingDeploy_1
+                  type: K8sBlueGreenDeploy
+                  name: K8sBlueGreenDeploy_1
+                  identifier: K8sBlueGreenDeploy_1
                   spec:
-                    skipDryRun: false
+                    skipDryRun: true
                     pruningEnabled: false
+                    skipUnchangedManifest: true
+                    delegateSelectors:
+                      - helm-delegate
                   timeout: 10m
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - Authentication
+                        action:
+                          type: Ignore
+                  when:
+                    stageStatus: Success
             rollbackSteps:
               - step:
                   name: Swap primary with stage service
