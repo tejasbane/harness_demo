@@ -1,0 +1,53 @@
+pipeline:
+  name: Deploy Demo
+  identifier: Deploy_Demo
+  projectIdentifier: harness_Demo
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: DeployK8s
+        identifier: DeployK8s
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: K8Service
+          environment:
+            environmentRef: Production
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra
+          execution:
+            steps:
+              - step:
+                  name: Stage Deployment
+                  identifier: stageDeployment
+                  type: K8sBlueGreenDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+              - step:
+                  name: Swap primary with stage service
+                  identifier: bgSwapServices
+                  type: K8sBGSwapServices
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+            rollbackSteps:
+              - step:
+                  name: Swap primary with stage service
+                  identifier: rollbackBgSwapServices
+                  type: K8sBGSwapServices
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
