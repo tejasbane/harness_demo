@@ -1,0 +1,12 @@
+connector:
+  name: harness_k8sconnector
+  identifier: harnessk8sconnector
+  description: "Testing for Demo"
+  orgIdentifier: Default
+  projectIdentifier: harness_Demo
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+      - DELEGATE_NAME
