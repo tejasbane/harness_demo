@@ -22,10 +22,12 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: K8sDryRun
-                  name: K8sDryRun_1
-                  identifier: K8sDryRun_1
+                  type: K8sRollingDeploy
+                  name: K8sRollingDeploy_1
+                  identifier: K8sRollingDeploy_1
                   spec:
+                    skipDryRun: true
+                    pruningEnabled: false
                     delegateSelectors:
                       - helm-delegate
                   timeout: 10m
